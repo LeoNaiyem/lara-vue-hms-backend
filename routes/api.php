@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AppointmentController;
 use App\Http\Controllers\Api\BedController;
+use App\Http\Controllers\Api\ConsultantController;
 use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\DesignationController;
 use App\Http\Controllers\Api\DoctorController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Api\MedicineController;
 use App\Http\Controllers\Api\MedicineTypeController;
 use App\Http\Controllers\Api\MoneyReceiptController;
 use App\Http\Controllers\Api\PatientController;
+use App\Http\Controllers\Api\PrescriptionController;
 use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\WardController;
 use Illuminate\Http\Request;
@@ -33,3 +35,5 @@ Route::apiResource('medicines',MedicineController::class);
 Route::apiResource('medicine-types',MedicineTypeController::class);
 Route::apiResource('invoices',InvoiceController::class);
 Route::apiResource('money-receipts',MoneyReceiptController::class);
+Route::apiResource('prescriptions', PrescriptionController::class);
+Route::apiResource('consultants',ConsultantController::class);

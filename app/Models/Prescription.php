@@ -19,4 +19,7 @@ class Prescription extends Model
     {
         return $this->belongsTo(Doctor::class);
     }
+    public function details(){
+    return $this->hasMany(PrescriptionDetail::class);
+    }
 }

@@ -95,11 +95,12 @@ class PrescriptionController extends Controller
         }
 
         $patient = Patient::find($prescription[0]->patient_id);
+        $doctor=Doctor::find($prescription[0]->consultant_id);
         // $details = InvoiceDetail::where('invoice_id', $invoiceId)->get();
 
         return response()->json([
             'prescription' => $prescription,
-            // 'details' => $details,
+            'doctor' => $doctor,
             'patient' => $patient
         ]);
     }
