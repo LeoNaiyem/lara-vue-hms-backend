@@ -11,4 +11,8 @@ class Invoice extends Model
     public function patient(){
         return $this->belongsTo(Patient::class);
     }
+    public function invoiceDetails(){
+        return $this->hasMany(InvoiceDetail::class);
+    }
+
 }

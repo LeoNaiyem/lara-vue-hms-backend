@@ -79,18 +79,16 @@ class MoneyReceiptController extends Controller
             ], 404);
         }
 
-        // Calculate totals
+        // Calculate totals safely
         $subtotal = 0;
-        $details = $moneyReceipt->moneyReceiptDetails->map(function ($detail) use (&$subtotal) {
+        $details = collect($moneyReceipt->moneyReceiptDetails)->map(function ($detail) use (&$subtotal) {
             $lineTotal = $detail->qty * $detail->price + $detail->vat - $detail->discount;
             $subtotal += $lineTotal;
-
             $detail->lineTotal = $lineTotal;
-
             return $detail;
         });
 
-        $tax = $subtotal * 0.05; // Assuming tax is 5%
+        $tax = $subtotal * 0.05; // Assuming 5% tax
 
         return response()->json([
             'success' => true,
@@ -102,6 +100,7 @@ class MoneyReceiptController extends Controller
             ],
         ]);
     }
+
 
     /**
      * Update the specified money receipt.
