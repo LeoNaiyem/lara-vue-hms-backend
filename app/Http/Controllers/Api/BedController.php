@@ -14,7 +14,7 @@ class BedController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Bed::query();
+        $query = Bed::with(['ward']);
 
         if ($request->filled('search')) {
             $query->where('bed_number', 'like', '%' . $request->search . '%');

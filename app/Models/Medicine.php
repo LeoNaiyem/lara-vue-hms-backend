@@ -10,4 +10,11 @@ class Medicine extends Model
 
     public $timestamps = false;
 
+    public function medicineType(){
+        return $this->belongsTo(MedicineType::class);
+    }
+    public function medicineCategory(){
+        return $this->belongsTo(MedicineCategory::class);
+    }
+
 }
