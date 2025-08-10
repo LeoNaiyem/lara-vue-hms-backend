@@ -10,4 +10,8 @@ class Service extends Model
 
     public $timestamps = false; // Disable timestamps
 
+    public function medicineCategory(){
+        return $this->belongsTo(MedicineCategory::class);
+    }
+
 }
