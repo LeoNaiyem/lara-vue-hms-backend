@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AdmissionController;
 use App\Http\Controllers\Api\AppointmentController;
 use App\Http\Controllers\Api\BedController;
 use App\Http\Controllers\Api\ConsultantController;
@@ -22,6 +23,9 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+Route::get('beds/available/{type}', [AdmissionController::class, 'getAvailableBeds']);
+Route::get('beds/available/', [AdmissionController::class, 'allAvailableBeds']);
+
 Route::apiResource('appointments', AppointmentController::class);
 Route::apiResource('doctors', DoctorController::class);
 Route::apiResource('patients', PatientController::class);
@@ -37,3 +41,4 @@ Route::apiResource('invoices',InvoiceController::class);
 Route::apiResource('money-receipts',MoneyReceiptController::class);
 Route::apiResource('prescriptions', PrescriptionController::class);
 Route::apiResource('consultants',ConsultantController::class);
+Route::apiResource('admissions',AdmissionController::class);
